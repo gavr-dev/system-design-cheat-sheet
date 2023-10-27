@@ -19,9 +19,9 @@ Networks can be divided into four types based on size, architecture, range, and 
 - **Wide Area Network (WAN)**: Spans a larger geographical area, often connecting multiple LANs. The internet is the most prominent example of a WAN, linking computers and networks worldwide.
 
 ## Components
-
-<img src="img\network\02_devices.png" style="zoom: 30%;" />
-
+<p align="center">
+<img src="img\network\02_devices.png" width="60%"/>
+</p>
 Building and maintaining networks would be impossible without specialized hardware devices:
 
 - **Cable & Wireless Access Point**: Physical cables (like Ethernet) provide a wired connection between devices, while wireless access points allow devices to connect to the network without physical cables, using Wi-Fi or other wireless technologies.
@@ -50,10 +50,9 @@ The following types of topologies are distinguished:
 
 ### Point-to-Point
 
-<img src="img\network\03_topology_01.png" style="zoom:25%;" align="left" /> 
+<img src="img\network\03_topology_01.png" width="50%" /> 
 
 A direct connection between two nodes or endpoints. This is the simplest form of network topology.
-
 
 
 **Advantages**:
@@ -72,13 +71,9 @@ A direct connection between two nodes or endpoints. This is the simplest form of
 
 ### Bus
 
-<img src="img\network\03_topology_02.png" style="zoom:20%;" align="left" /> 
-
-
+<img src="img\network\03_topology_02.png" width="50%" /> 
 
 All devices share a single communication line. Data sent by a device is available to all other devices, but only the intended recipient accepts and processes that data.
-
-
 
 
 
@@ -95,15 +90,11 @@ All devices share a single communication line. Data sent by a device is availabl
 - A single cable failure can bring down the entire network.
 
 ### Ring
-<img src="img\network\03_topology_03.png" style="zoom:20%;" align="left" /> 
+<img src="img\network\03_topology_03.png" width="50%" /> 
 
 
 
 Each device is connected to two other devices, forming a ring. Data travels in one or sometimes two directions.
-
-
-
-
 
 
 
@@ -118,7 +109,7 @@ Each device is connected to two other devices, forming a ring. Data travels in o
 - More difficult to install and reconfigure.
 
 ### Star
-<img src="img\network\03_topology_04.png" style="zoom:20%;" align="left" /> 
+<img src="img\network\03_topology_04.png" width="50%" /> 
 
 
 
@@ -143,20 +134,13 @@ All devices are connected to a central device (e.g., a switch or hub).
 - Requires more cable than bus topology.
 
 ### Tree
-<img src="img\network\03_topology_05.png" style="zoom:20%;" align="left" /> 
+<img src="img\network\03_topology_05.png" width="50%"  /> 
 
 
 
 
 
 Hybrid topology that combines characteristics of star and bus topologies. Groups of star-configured networks are connected to a linear bus backbone.
-
-
-
-
-
-
-
 
 
 **Advantages**:
@@ -172,7 +156,7 @@ Hybrid topology that combines characteristics of star and bus topologies. Groups
 - More cabling is required than other topologies.
 
 ### Mesh
-<img src="img\network\03_topology_06.png" style="zoom:20%;" align="left" /> 
+<img src="img\network\03_topology_06.png" width="50%"  /> 
 
 
 
@@ -199,7 +183,7 @@ Devices are interconnected. Every device is connected to every other device.
 - Complex to install and configure.
 
 ### Hybrid
-<img src="img\network\03_topology_07.png" style="zoom:20%;" align="left" /> 
+<img src="img\network\03_topology_07.png" width="50%"  /> 
 
 
 
@@ -359,8 +343,9 @@ The most common API design styles:
 Let's look at each protocol separately with all their pros, cons, and use cases.
 
 ## REST
-
-<img src="img\api\02_rest.png" style="zoom:25%;" />
+<p align="center">
+<img src="img\api\02_rest.png" width="65%" />
+</p>
 
 **REST** is an architectural style that uses standard conventions and protocols, making it easy to understand and implement. Its stateless nature and use of standard HTTP methods make it a popular choice for building web-based APIs.
 
@@ -435,8 +420,9 @@ GET “/user/42”
 ```
 
 ## GraphQL
-
-<img src="img\api\03_graphQL.png" style="zoom:25%;" />
+<p align="center">
+<img src="img\api\03_graphQL.png" width="65%" />
+</p>
 
 **GraphQL** offers a more flexible, robust, and efficient approach to building APIs, especially in complex systems or when the frontend needs high flexibility. It shifts some of the responsibility from the server to the client, allowing the client to specify its data requirements.
 
@@ -494,8 +480,9 @@ GET “/graphql?query=user(id:42){ name role { id name } }”
 ```
 
 ## WebSocket
-
-<img src="img\api\04_websocket.png" style="zoom:25%;" />
+<p align="center">
+<img src="img\api\04_websocket.png" width="65%" />
+</p>
 
 **WebSockets** provide a full-duplex communication channel over a single, long-lived connection, allowing real-time data exchange between a client and a server. This makes it ideal for interactive and high-performance web applications.
 
@@ -543,7 +530,9 @@ HTTP/1.1 101 Switching Protocols
 
 ## Webhook
 
-<img src="img\api\05_webhook.png" style="zoom:25%;" />
+<p align="center">
+<img src="img\api\05_webhook.png" width="65%" />
+</p>
 
 **Webhook** is a user-defined HTTP callback triggered by specific web application events, allowing real-time data updates and integrations between different systems.
 
@@ -592,8 +581,9 @@ GET “[https://external-site/webhooks?url=http://site/service-h/api&name=name](
 ```
 
 ## RPC and gRPC
-
-<img src="img\api\06_gRPC.png" style="zoom:25%;" />
+<p align="center">
+<img src="img\api\06_gRPC.png" width="65%" />
+</p>
 
 **RPC** (Remote Procedure Call) is a protocol that allows a program to execute a procedure or subroutine in another address space, enabling seamless communication and data exchange between distributed systems.
 
@@ -678,7 +668,7 @@ GET “[https://external-site/webhooks?url=http://site/service-h/api&name=name](
 
 #### Example
 
-```json
+```
 message User {
   int id = 1
   string name = 2
@@ -690,8 +680,9 @@ service UserService {
 ```
 
 ## SOAP
-
-<img src="img\api\07_soap.png" style="zoom:25%;" />
+<p align="center">
+<img src="img\api\07_soap.png" width="65%" />
+</p>
 
 **SOAP**, which stands for Simple Object Access Protocol, is a protocol for exchanging structured information to implement web services in computer networks. It's an XML-based protocol that allows programs running on disparate operating systems to communicate with each other.
 
@@ -761,8 +752,9 @@ service UserService {
 ```
 
 # Balancer, Proxy, Gateway
-
-![](img\proxy\01_all_4.png)
+<p align="center">
+<img src="img\proxy\01_all_4.png" width="100%" />
+</p>
 
 Load Balancers, Reverse Proxies, Forward Proxies, and API Gateways are all network tools that manage traffic between clients and servers, but they serve different purposes and have unique features.
 
@@ -801,9 +793,9 @@ Based on specific needs, load balancing can be performed at the network/transpor
 Load balancing can be categorized into local and global types, each serving different scopes and use cases. Local load balancing operates within a single data center or cloud region, focusing on distributing traffic among servers in that specific location. On the other hand, global load balancing works across multiple data centers or cloud regions, often on a worldwide scale. It routes users to the nearest or best-performing data center.
 
 #### Global Server Load Balancers (GSLB)
-
-<img src="img\proxy\02_gslb.png" style="zoom:50%;" />
-
+<p align="center">
+<img src="img\proxy\02_gslb.png" width="50%" />
+</p>
 **GSLB**, or Global Server Load Balancing, is designed to distribute user traffic across multiple geographically dispersed data centers. Its primary purpose is to optimize user experience by reducing latency and enhancing fault tolerance. GSLB is primarily based on the Domain Name System (DNS). When a DNS query comes in for a particular domain, the GSLB-enabled DNS server doesn't just return a pre-configured IP address. Instead, it evaluates various metrics such as the geographic proximity of the user to the data centers, the health and load of the servers in those data centers, and even performance metrics like latency and packet loss. Based on these factors, the DNS server returns the IP address of the most suitable data center. This ensures that users are always directed to the optimal server, improving performance and availability.
 
 The most common balancing use cases are:
@@ -826,9 +818,9 @@ GSLB provides:
 **Popular Solutions**: F5 BIG-IP DNS, Citrix ADC, AWS Route 53, Cloudflare Load Balancer
 
 #### Local Load Balancers
-
-<img src="img\proxy\03_lb.png" style="zoom:50%;" />
-
+<p align="center">
+<img src="img\proxy\03_lb.png" width="50%"/>
+</p>
 A **Local Load Balancer** operates within a single data center or cloud region, primarily focusing on distributing incoming traffic among local servers. Its main goal is to optimize resource utilization, maximize throughput, and minimize response time. It works to intelligently route incoming requests to the most appropriate server within the local network. Doing so enhances the performance and reliability of applications and services within that specific location.
 
 Local Load Balancer provides:
@@ -853,49 +845,32 @@ The choice of a load-balancing algorithm depends on the specific needs and objec
 
 #### Static Algorithms
 
-<img src="img\proxy\al1.png" style="zoom:30%;" align=left /> 
+<img src="img\proxy\al1.png" width="40%"/> 
+
+Distributes incoming requests sequentially and evenly across all available servers cyclically.
 
 
 
-​      Distributes incoming requests sequentially and evenly across all available servers cyclically.
+<img src="img\proxy\al2.png" width="40%"  />       
 
 
 
+A hybrid approach that combines Round Robin distribution with session persistence, ensuring that once a user session is established, it remains on the assigned server.
 
 
 
+<img src="img\proxy\al3.png" width="40%"  />  
+
+
+Similar to Round Robin, each server is assigned a weighted score, affecting the distribution of requests. Servers with higher weights receive a larger share of the incoming requests.
 
 
 
-<img src="img\proxy\al2.png" style="zoom:30%;" align=left />       
+<img src="img\proxy\al4.png" width="40%"  /> 
 
 
 
-​        A hybrid approach that combines Round Robin distribution with session persistence, ensuring that once a user session is established, it remains on the assigned server.
-
-
-
-
-
-
-
-<img src="img\proxy\al3.png" style="zoom:30%;" align=left />  
-
-
-
-​      Similar to Round Robin, each server is assigned a weighted score, affecting the distribution of requests. Servers with higher weights receive a larger share of the incoming requests.
-
-
-
-
-
-
-
-<img src="img\proxy\al4.png" style="zoom:30%;" align=left /> 
-
-
-
-​      This algorithm hashes the client's IP address to determine the server for routing the request, ensuring session persistence by always directing a specific client's requests to the same server.
+This algorithm hashes the client's IP address to determine the server for routing the request, ensuring session persistence by always directing a specific client's requests to the same server.
 
 
 
@@ -903,7 +878,7 @@ The choice of a load-balancing algorithm depends on the specific needs and objec
 
 #### Dynamic Algorithms
 
-<img src="img\proxy\al5.png" style="zoom:30%;" align=left />   
+<img src="img\proxy\al5.png" width="40%"  />   
 
 
 
@@ -915,7 +890,7 @@ The choice of a load-balancing algorithm depends on the specific needs and objec
 
 
 
-<img src="img\proxy\al6.png" style="zoom:30%;" align=left /> 
+<img src="img\proxy\al6.png" width="40%" /> 
 
 
 
@@ -926,8 +901,9 @@ The choice of a load-balancing algorithm depends on the specific needs and objec
 
 
 ## Reverse Proxy
-
-<img src="img\proxy\04_rp.png" style="zoom:50%;" />
+<p align="center">
+<img src="img\proxy\04_rp.png" width="50%" />
+</p>
 
 A **Reverse Proxy**, like a Load Balancer, is a server that sits between clients and a web server, directing incoming requests to appropriate backend servers. The key difference between a reverse proxy and a load balancer is their primary focus. While both can distribute traffic across multiple servers, a load balancer is designed explicitly for this purpose and usually offers more advanced distribution algorithms. A reverse proxy, on the other hand, provides a broader range of functionalities, such as:
 
@@ -952,8 +928,9 @@ Reverse proxies can be helpful even with just one web server or application serv
 **Popular Solutions**: Nginx, Apache HTTP Server (mod_proxy), HAProxy, Squid, Azure Application Gateway
 
 ## Forward Proxy
-
-<img src="img\proxy\05_fp.png" style="zoom:50%;" />
+<p align="center">
+<img src="img\proxy\05_fp.png" width="50%"  />
+</p>
 
 A **Forward Proxy** is a server that sits between client devices and the Internet, acting as an intermediary for outgoing requests from the client. A forward proxy accepts connections from computers on a private network and forwards those requests to the public internet. It is the single exit point for subnet users accessing resources outside their private network. The key difference between a forward proxy and a reverse proxy lies in their primary roles and whom they serve. A forward proxy primarily serves the client's needs, helping it access blocked or restricted content and providing anonymity. A reverse proxy, on the other hand, is installed on the server side and manages incoming requests to the server. A forward proxy is client-focused and provides functions like:
 
@@ -972,9 +949,9 @@ A **Forward Proxy** is a server that sits between client devices and the Interne
 **Popular Solutions**: Squid, Tinyproxy, CCProxy, WinGate
 
 ## API Gateway
-
-<img src="img\proxy\05_api.png" style="zoom:50%;" />
-
+<p align="center">
+<img src="img\proxy\05_api.png" width="50%"  />
+</p>
 
 An **API Gateway** is a centralized entry point that manages and routes API requests from client applications to appropriate backend services. It acts as a layer of abstraction between the client and multiple backend services, streamlining their interaction. It is a crucial component in modern architecture, especially in microservices-based systems. API gateways offer various functionalities like:
 
