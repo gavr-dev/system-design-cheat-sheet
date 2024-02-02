@@ -7,35 +7,24 @@ Any complex system is a mosaic of numerous components, each with its specific fu
 One must understand how components communicate over the network to comprehend the system's overall performance and resilience truly.
 
 ## Types
-<img src="img\network\01_wan_man_lan.png" style="zoom:100%;" />
+![](img/network/01_wan_man_lan.png)
 Networks can be divided into four types based on size, architecture, range, and function:
 
 - **Personal Area Network (PAN)**: Designed for personal use, usually within a person's range. It might connect devices like a computer, smartphone, and smartwatch, often Bluetooth.
-
 - **Local Area Network (LAN**): Connects devices within a limited area, such as a home, office, or school. It's typically used for connecting computers and sharing resources like printers or internet connections within a confined geographical area.
-
 - **Metropolitan Area Network (MAN):** Covers a larger area than a LAN but is smaller than a WAN, typically spanning a city or a large campus. Local service providers often use it to offer connections to businesses and homes in a town.
-
 - **Wide Area Network (WAN)**: Spans a larger geographical area, often connecting multiple LANs. The internet is the most prominent example of a WAN, linking computers and networks worldwide.
 
 ## Components
-<p align="center">
-<img src="img\network\02_devices.png" width="60%"/>
-</p>
+![](img/network/02_devices.png)
 Building and maintaining networks would be impossible without specialized hardware devices:
 
 - **Cable & Wireless Access Point**: Physical cables (like Ethernet) provide a wired connection between devices, while wireless access points allow devices to connect to the network without physical cables, using Wi-Fi or other wireless technologies.
-
 - **Network Interface Card (NIC)**: These are hardware components, often cards inserted into computers or other devices, that allow them to connect to a network.
-
 - **Repeater**: A network device that amplifies or regenerates a signal, allowing it to travel longer distances without degradation. It's primarily used in wired and wireless networks to extend the range of communication and ensure data integrity over extended distances.
-
 - **Bridge:** A bridge operates at the data link layer. A bridge is a repeater, adding the functionality of filtering content by reading the MAC addresses of the source and destination. It is also used for interconnecting two LANs working on the same protocol.
-
 - **Hub**: These basic networking devices connect multiple devices in a LAN, acting as a single network segment. Hub cannot filter data, so data packets are sent to all connected devices.
-
 - **Switches**: Devices in a network that connect other devices. Unlike hubs, which broadcast the same data to all devices, switches are more intelligent, directing data only to the device that needs it.
-
 - **Routers**: Devices that forward data packets between computer networks. They determine the best path for data transfer. Routers typically connect LANs and WANs and have a dynamically updating routing table based on which they make decisions on routing the data packets.
 
 ## Topologies
@@ -43,178 +32,106 @@ Building and maintaining networks would be impossible without specialized hardwa
 Network topology is a structural layout that dictates how different network devices and components are connected and how data is transmitted. The choice of topology significantly impacts the network's performance, scalability, and fault tolerance. It is categorized into two main types:
 
 - **Physical**: Describes the physical layout of devices, cables, and other network components. It represents how network devices are physically connected.
-
 - **Logical**: Describes the data flow within the network, regardless of its physical design. It represents how data is transmitted between network devices.
 
 The following types of topologies are distinguished:
 
 ### Point-to-Point
 
-<img src="img\network\03_topology_01.png" width="50%" /> 
+![](img/network/03_topology_01.png)
 
 A direct connection between two nodes or endpoints. This is the simplest form of network topology.
 
-
 **Advantages**:
-
 - The direct and dedicated link ensures high-speed data transfer.
-
 - Simple configuration and setup.
-
 - Reliable communication since there are only two nodes involved.
 
 
 **Disadvantages**:
-
 - It is not scalable for larger networks as it would require a dedicated line for every pair of devices.
 - It can be more expensive in scenarios where multiple connections are needed due to the need for individual links.
 
 ### Bus
 
-<img src="img\network\03_topology_02.png" width="50%" /> 
+![](img/network/03_topology_02.png)
 
 All devices share a single communication line. Data sent by a device is available to all other devices, but only the intended recipient accepts and processes that data.
 
-
-
 **Advantages**:
-
 - Easy to implement for small networks.
-
 - Cost-effective due to minimal cabling.
 
-
 **Disadvantages**:
-
 - Performance degrades as more devices are added or network traffic increases.
 - A single cable failure can bring down the entire network.
 
 ### Ring
-<img src="img\network\03_topology_03.png" width="50%" /> 
-
-
+![](img/network/03_topology_03.png)
 
 Each device is connected to two other devices, forming a ring. Data travels in one or sometimes two directions.
 
-
-
 **Advantages**:
-
 - It can handle larger data loads than bus topology.
 
-
 **Disadvantages**:
-
 - A failure in one cable or device can take down the entire network.
 - More difficult to install and reconfigure.
 
 ### Star
-<img src="img\network\03_topology_04.png" width="50%" /> 
-
-
-
-
+![](img/network/03_topology_04.png)
 
 All devices are connected to a central device (e.g., a switch or hub).
 
-
-
-
-
-
-
 **Advantages**:
-
 - Easy to install and manage.
 - Failure in one cable doesn't affect other devices.
 
 **Disadvantages**:
-
 - If the central device fails, the whole network is inoperable.
 - Requires more cable than bus topology.
 
 ### Tree
-<img src="img\network\03_topology_05.png" width="50%"  /> 
-
-
-
-
+![](img/network/03_topology_05.png)
 
 Hybrid topology that combines characteristics of star and bus topologies. Groups of star-configured networks are connected to a linear bus backbone.
 
-
 **Advantages**:
-
 - Hierarchical and scalable.
-
 - Grouping of devices makes it easy to manage.
 
-
 **Disadvantages**:
-
 - Failure in the backbone will cause division in the network.
 - More cabling is required than other topologies.
 
 ### Mesh
-<img src="img\network\03_topology_06.png" width="50%"  /> 
-
-
+![](img/network/03_topology_06.png)
 
 Devices are interconnected. Every device is connected to every other device.
 
 
-
-
-
-
-
-
-
 **Advantages**:
-
 - Provides high redundancy and reliability.
-
 - Data can be transmitted from multiple devices simultaneously.
 
-
 **Disadvantages**:
-
 - It requires more cabling, making it expensive.
 - Complex to install and configure.
 
 ### Hybrid
-<img src="img\network\03_topology_07.png" width="50%"  /> 
-
-
-
+![](img/network/03_topology_07.png)
 Combination of two or more topologies.
 
-
-
-
-
-
-
-
-
 **Advantages**:
-
 - Flexible and reliable as it inherits the advantages of its component topologies.
-
 - Scalable.
 
-
 **Disadvantages**:
-
 - Complex design.
 - It can be more expensive due to multiple configurations.
-
 ## Protocols
-
 Network protocols are rules or standards that define how data is transmitted and received over a network. These protocols ensure that devices on a network (or across multiple networks) can communicate with each other in a standardized way.
-
 ### Common Protocols
-
 - **TCP/IP**: The fundamental suite of protocols that powers the Internet. TCP ensures data is sent correctly, and IP provides data is sent to the correct place.
 - **UDP**: A connectionless protocol that, unlike TCP, doesn't establish a connection before sending data and doesn't guarantee the order of data packets.
 - **HTTP, HTTPS:** Protocols used for transferring web pages on the Internet. HTTPS includes security measures to encrypt data.
@@ -230,7 +147,6 @@ Network protocols are rules or standards that define how data is transmitted and
 - **Ethernet**: Defines how devices on a local area network (LAN) communicate. It operates at both the physical layer and the data link layer of the OSI model.
 
 ## OSI and TCP/IP Models
-
 The OSI and TCP/IP are two primary models that serve as guiding frameworks that describe the processes involved in data communication over a network.
 
 |      |  OSI Model   |       Protocol       |   Data Format   |   TCP/IP Model    |
@@ -246,87 +162,48 @@ The OSI and TCP/IP are two primary models that serve as guiding frameworks that 
 The **OSI** (Open Systems Interconnection) model is a conceptual framework for understanding network interactions in seven layers. Each layer serves a specific function:
 
 1. **Physical**: Deals with the physical connection between devices. It defines the hardware elements, such as cables, switches, and NICs.
-
 2. **Data Link**: Responsible for creating a reliable link between two directly connected nodes, handling errors, and regulating data flow.
-
 3. **Network**: Determines the best path to transfer data from the source to the destination across the network.
-
 4. **Transport**: Ensures end-to-end communication, data flow control, and error correction.
-
 5. **Session**: Establishes, maintains, and terminates application connections at both ends.
-
 6. **Presentation**: Translates data between the application and transport layers, ensuring data is readable.
-
 7. **Application**: Directly interacts with end-user applications, ensuring effective communication between software and lower layers of the OSI model.
-
 
 
 The **TCP/IP** is a more concise model used predominantly in the modern internet, which simplifies the OSI layers into four categories:
 
 1. **Network Interface**: Combines the functions of OSI's Physical and Data Link layers, focusing on how data is sent/received on a network medium.
-
 2. **Internet**: Corresponds to the Network layer in OSI, handling data routing, IP addressing, and packet forwarding.
-
 3. **Transport**: Similar to OSI's Transport layer, ensuring data reaches the correct application and is transmitted reliably (TCP) or quickly (UDP).
-
 4. **Application**: Merges the functions of OSI's Session, Presentation, and Application layers, dealing with end-user application processes.
-
 ## Security
-
 In system design, ensuring robust network security is paramount to protect sensitive data and maintain the trust of users and stakeholders, ensure business continuity, and meet regulatory requirements.
-
 ### Common Threats and Vulnerabilities
-
 1. **DDoS Attacks**: Malicious attempts to disrupt the normal traffic of a targeted server, service, or network by overwhelming it with a flood of internet traffic.
-
 2. **Malware**: Software designed to disrupt, damage, or gain unauthorized access to a computer system. This includes viruses, worms, spyware, and ransomware.
-
 3. **Man-in-the-Middle Attacks**: Attackers secretly intercept and relay communication between two parties. They can eavesdrop or impersonate one of the parties, deceiving the other.
-
 4. **Insider Threats**: Threats originating from within the organization, such as employees, former employees, or partners with inside information concerning security practices.
-
 5. **Software Flaws**: Bugs or weaknesses in software can be exploited to gain unauthorized access or disrupt services. Examples include buffer overflows and unhandled exceptions.
-
 6. **Hardware Weaknesses**: Physical components can have vulnerabilities, like firmware that can be tampered with or backdoors installed by manufacturers.
-
 7. **Misconfigured Network Devices**: Devices like routers, switches, or firewalls that are not correctly configured can expose the network to various threats.
-
 8. **Weak Authentication and Authorization**: Insufficient password policies, lack of multi-factor authentication, or lax access controls can allow unauthorized access.
-
 9. **Unencrypted Data**: Data that isn't encrypted can be easily intercepted and read as it travels across a network.
-
 10. **Outdated Systems**: Systems that are no longer supported or haven't been updated can have known vulnerabilities that are easy to exploit.
-
 11. **Physical Vulnerabilities**: This refers to physical access points where an attacker could plug into the network or access servers directly.
-
 ### Best Practices for Ensuring Network Security
-
 1. **Firewalls**: Deploy hardware and software firewalls to monitor and control incoming and outgoing network traffic based on security policies.
-
 2. **Encryption**: Use encryption protocols, especially for sensitive data, both in transit (like SSL/TLS for web traffic) and at rest (like database encryption).
-
 3. **Regular Updates**: Keep all systems, software, and applications updated to patch vulnerabilities.
-
 4. **Multi-Factor Authentication (MFA)**: Implement MFA to add a layer of security, ensuring that users provide two or more verification factors to gain access.
-
 5. **Network Monitoring**: Use network monitoring tools to monitor the network for unusual activities or unauthorized access continuously.
-
 6. **Security Awareness Training**: Educate employees and users about the importance of security and how to recognize potential threats.
-
 7. **Network Segmentation**: Limits the spread of threats within the network and provides better control over data access.
-
 8. **Backup and Disaster Recovery**: Ensures data availability and business continuity in case of breaches or failures.
-
 9. **Physical Security**: Physical access to network devices can lead to breaches.
 
-
-
 # API Architecture Styles
-
 API architecture refers to the set of rules, protocols, and tools that dictate how software components should interact. The architecture of an API is not just about facilitating communication; it's also about ensuring that this communication is efficient, secure, and scalable.
-
 A well-designed API architecture can significantly enhance the performance of a system, while a poorly designed one can lead to bottlenecks, security vulnerabilities, and maintenance nightmares.
-
 ## Different Styles of API Architecture
 
 <img src="img\api\01_api_all.png" style="zoom: 20%;" />
