@@ -659,3 +659,174 @@ In the complex landscape of network architecture and web services, understanding
 **API Gateways**, on the other hand, are specialized types of reverse proxies tailored for API traffic. They offer advanced functionalities like request routing, API composition, rate limiting, and security features such as authentication and authorization.
 
 Each component has advantages and limitations, and your project's specific needs and constraints should dictate the choice between them. In many modern architectures, you'll often find a combination of these elements working to create a robust, scalable, and secure environment. Understanding their distinct roles and capabilities is the first step in making an informed decision about which to implement in your system.
+
+# Cache
+The cache is a layer that stores a subset of data, typically the most frequently accessed or essential information, in a location quicker to access than its primary storage location. This caching strategy is used to reduce latency and improve the efficiency of data retrieval across the distributed system.
+
+**Terms of Caching**
+
+- **Cache Hit:** Occurs when the requested data is found in the cache, allowing for faster data retrieval.
+- **Cache Miss:** Happens when the requested data is not in the cache, necessitating fetching the data from its primary storage location.
+- **Cache Eviction:** The process of removing data from the cache, typically to make space for new data. 
+- **Cache Staleness:** Refers to the situation where the data in the cache is outdated compared to the data in the primary storage.
+- **Cache Warm-Up:** The process of preloading the cache with data before it is actively used to avoid cache misses in the early stages of usage.
+- **Cache State**: The status of data stored in a cache:
+	- **Hot**: Cache contains data that is being accessed very frequently and recently.
+	- **Warm**: Cache is not as actively used as a hot cache but still contains relatively frequently accessed data.
+	- **Cold**: Cache is first initialized and has not yet had any data loaded.
+
+**Benefits of using Caching**
+
+- **Reduced Latency:** Caching significantly decreases the time it takes to access data, leading to faster response times for user requests.
+- **Decreased Network Traffic:** By storing frequently accessed data locally, caching reduces the amount of data that must be transmitted over a network, thereby decreasing network congestion.
+- **Lower Load on Primary Data Stores:** Caching reduces the number of queries to primary data sources like databases, decreasing their load and potentially increasing lifespan.
+- **Improved Performance:** Applications and systems often experience a general performance boost, as retrieving data from a cache is typically faster than accessing it from primary storage.
+- **Increased Throughput:** Systems can handle more data and user requests in a given time due to the efficiency gains from caching.
+- **Data Availability:** In some caching strategies, data can still be available even if the primary data source is temporarily unavailable.
+
+**Challenges of using Caching**
+
+- **Cache Coherence:** Ensuring that data remains consistent across multiple caches in a distributed system.
+- **Cache Invalidation:** Deciding when and how to update or remove data in the cache, especially when the original data changes.
+- **Stale Data:** Handling scenarios where data in the cache is outdated compared to the primary data source.
+- **Cache Sizing:** Determining the optimal size of the cache to balance performance gains with resource usage.
+- **Cache Eviction Policies:** Choosing appropriate algorithms for which data to keep in the cache and which to evict when the cache is full.
+- **Data Locality:** Ensuring data is stored in a cache close to where it is most frequently accessed to minimize latency.
+- **Scalability:** Ensuring the cache can scale as the amount of data and the number of users increase.
+- **Warm up Time:** Managing the time for a cache to “warm up” and become effective after being cleared or created.
+- **Thundering Herd Problem:** Occurs when a cached item expires, and multiple clients or processes simultaneously attempt to regenerate the same cache item, causing a surge in load on the data store or compute resources.
+- **Cache Penetration:** Happens when queries for non-existent data (not in cache or primary storage) repeatedly bypass the cache and hit the database, potentially leading to performance degradation.
+- **Big Key Problem:** Arises when a single cache key is associated with a large amount of data, leading to inefficiencies in cache utilization and potential performance issues.
+- **Hot Key Challenge:** Refers to a situation where a few keys are accessed much more frequently than others, causing load imbalances and potential bottlenecks in the caching system.
+
+## Types of Caching
+![](cache/01_types.png)
+
+1. **Client Side:** Caching web content in a browser or device to accelerate content retrieval.
+2. **CDN (Content Delivery Network):** Distributing content across multiple geographic locations to improve access speed.
+3. **Load Balancer / API Gateway:** Balancing incoming network traffic and requests across multiple servers and potentially caching these requests.
+4. **Application:** Caching within an application to improve performance and data access.
+	1. **CPU Cache:** Stores frequently accessed data to reduce CPU access time.
+	    - **L1**: Instruction and Data
+	    - **L2**: Shared or per-core L2 cache
+	    - **L3**: Shared among multiple CPU cores
+    1. **In-memory Cache:** Caching data within a single application process.
+    2. **Shared Memory Cache:** Sharing cached data across different processes in the same system.
+    3. **Disk Cache**: Caching read operations from a physical disk.
+	     - **File System Caching**: The file system may cache frequently accessed data and metadata.
+	     - **Operating System-Level Disk Caches**: Modern operating systems often employ disk caching to improve I/O performance system-wide.
+	     - **Application-Specific Caches**: Some applications implement their caching mechanisms to store and manage frequently used data.
+	     - **Third-Party Caching Solutions**: Some third-party caching solutions and libraries can be integrated into applications to provide caching capabilities.
+5. **Distributed Cache:** Sharing cache across multiple systems or services. Sharding techniques:
+	- **Key-Based Sharding**: Data is partitioned and distributed across cache nodes based on the keys of cached items.
+	- **Range-based**: Distributing data based on a range of values.
+	- **Hash-Based Sharding**: Data is partitioned using a hash function that evenly distributes keys across multiple shards. 
+	- **Consistent Hashing**: This technique combines the benefits of key-based and hash-based sharding. It uses a consistent hashing algorithm to map keys to cache nodes, allowing for dynamic scaling without significant data redistribution.
+6. **Full-text Search:** Indexing and searching through documents or logs.
+7. **Database:** Storing frequently accessed database queries and results to speed up future requests.
+
+## Top caching strategies
+
+### Cache Aside
+![](cache/02_strategy_01.png)
+Also known as "Lazy Loading," this strategy involves loading data into the cache on demand. When an application requests data, it first checks the cache. If the data is not found (cache miss), it is fetched from the database and stored in the cache for future requests.
+
+**Pros:**
+- Prevents unnecessary data from being loaded into the cache.
+- Offers fine-grained control over what is cached.
+
+**Cons:**
+- Can lead to increased latency for cache misses as the application must wait for data to be loaded from the database.
+- Requires additional complexity in application code to manage caching logic.
+
+### Read Through
+![](cache/02_strategy_02.png)
+
+In this approach, data is automatically loaded into the cache from the database when there is a cache miss. The application only interacts with the cache and not directly with the database for read operations.
+
+**Pros:**
+- Simplifies application logic as the caching layer handles data loading.
+- Ensures that only requested data is loaded into the cache, saving space.
+
+**Cons:**
+- Initial read operations may be slower due to cache misses and subsequent database access.
+- The cache can become a bottleneck if it is not efficiently managed.
+
+### Write Around
+
+![](cache/02_strategy_03.png)
+When data is written, it is written directly to the database and not to the cache. The cache is only updated when data is read.
+
+ **Pros:**
+   - Reduces cache churn by avoiding caching data that is infrequently read.
+   - Minimizes the risk of cache and database getting out of sync.
+   
+ **Cons:**
+   - Can lead to slower read operations following a write, as the data must be loaded into the cache from the database.
+   - May increase database load since every write goes directly to the database.
+### Write Back (Write Behind)
+
+![](cache/02_strategy_04.png)
+Data is first written to the cache and then, after a certain amount of time or under certain conditions, written back to the database. This allows for batch updates.
+
+ **Pros:**
+   - Improves write performance as operations are done quickly in the cache.
+   - Reduces database load by batching write operations.
+
+ **Cons:**
+   - Risk of data loss if the cache fails before data is written back to the database.
+   - Complexity in ensuring that the cache and database are eventually synchronized.
+
+### Write Through
+
+![](cache/02_strategy_05.png)
+Data is written simultaneously to the cache and the database. This ensures data consistency between the cache and database.
+
+**Pros:**
+   - Guarantees data consistency as writes to the cache and database are synchronous.
+   - Easy to implement and understand.
+
+**Cons:**
+   - Can lead to higher latency for write operations as they must be completed in both cache and database.
+   - Increased load on the database for every write operation.
+## Cache eviction policies
+
+Cache eviction policies are critical in caching systems due to the limited size of caches; they ensure optimal use of available space by determining which data to retain or discard. These policies enhance overall cache performance by keeping the most relevant data accessible while maintaining data accuracy and consistency by removing outdated or less frequently used information.
+
+ The most well-known strategies include the following:
+ 
+ 1. **First In, First Out (FIFO):** Evicts the oldest items in the cache first, regardless of their usage frequency.
+ 2. **Least Recently Used (LRU):** Evicts the least recently accessed items first, assuming that items not accessed recently are less likely to be accessed in the future.
+3. **Most Recently Used (MRU):** Opposite of LRU, it evicts the most recently used items first. This can be useful when the most recent items are less likely to be reaccessed.
+4. **Least Frequently Used (LFU):** Prioritizes eviction of least frequently accessed items, assuming frequent access implies future relevance.
+5. **Most Frequently Used (MFU)**: Eviction policy is a cache eviction strategy where the cache identifies and removes the data items that are accessed most frequently.
+6. **Random Replacement (RR):** Randomly selects a cache item to evict, which can be simpler to implement and effective in specific scenarios.
+7. **Size-Based Eviction:** Evicts items based on their size to manage the memory footprint, often used in combination with other policies.
+
+## Cache invalidation
+
+In addition to removing infrequently accessed items, caches often contain data that becomes obsolete or stale. These outdated cache entries need to be identified and slated for removal.
+
+The most well-known strategies include the following:
+
+1. **Time to Live (TTL):** Data is invalidated after a specified duration. When the TTL expires, the cached data is either automatically removed or marked as invalid. There are two approaches:
+	 - **Active expiration**: A background process or thread periodically scans the cache to check the TTL of cache entries.
+	- **Passive expiration**: Checks the TTL of a cache entry at its access time.
+3. **Write-Invalidate:** When data is updated in the primary storage, corresponding cache entries are invalidated. This ensures consistency between the cache and the source.
+4. **Change Notification:** The cache listens for notifications from the data source about changes. When notified, the cache invalidates the relevant entries.
+5. **Polling:** The cache periodically checks the validity of its entries by comparing them with the source data.
+
+## Popular Solutions
+
+List of some popular caching solutions widely used in various applications and systems:
+
+1. **Redis:** An in-memory data structure store used as a database, cache, and message broker and known for its performance and flexibility.
+2. **Memcached:** A high-performance, distributed memory object caching system primarily used for speeding up dynamic web applications by alleviating database load.
+3. **Ehcache:**  An open-source, Java-based cache that provides fast, off-heap storage. It’s widely used in Java applications for caching.
+4. **Apache Ignite:**  A distributed database, caching, and processing platform designed for transactional, analytical, and streaming workloads at a large scale.
+5. **Hazelcast:** An in-memory computing platform that provides distributed caching, messaging, and computing. Often used for performance-critical applications.
+6. **Squid:** A caching and forwarding HTTP web proxy. It can cache web, DNS, and other computer network lookups for people sharing network resources.
+7. **CDN Solutions (like Akamai, Cloudflare):** These are not traditional caching solutions but are often used for caching static and dynamic content closer to the end users in distributed networks.
+
+
+In conclusion, caching is a critical component in modern computing, offering a powerful solution to enhance performance, reduce latency, and manage data efficiently across various systems and applications. From accelerating web page loading times to optimizing database queries, caching is pivotal in improving user experiences and system responsiveness. Popular solutions like Redis, Memcached, and CDN services demonstrate the versatility and adaptability of caching strategies to different needs, from small-scale applications to large, distributed architectures.
