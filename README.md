@@ -700,7 +700,7 @@ The cache is a layer that stores a subset of data, typically the most frequently
 - **Hot Key Challenge:** Refers to a situation where a few keys are accessed much more frequently than others, causing load imbalances and potential bottlenecks in the caching system.
 
 ## Types of Caching
-![](cache/01_types.png)
+![](img/cache/01_types.png)
 
 1. **Client Side:** Caching web content in a browser or device to accelerate content retrieval.
 2. **CDN (Content Delivery Network):** Distributing content across multiple geographic locations to improve access speed.
@@ -728,7 +728,7 @@ The cache is a layer that stores a subset of data, typically the most frequently
 ## Top caching strategies
 
 ### Cache Aside
-![](cache/02_strategy_01.png)
+![](img/cache/02_strategy_01.png)
 Also known as "Lazy Loading," this strategy involves loading data into the cache on demand. When an application requests data, it first checks the cache. If the data is not found (cache miss), it is fetched from the database and stored in the cache for future requests.
 
 **Pros:**
@@ -740,7 +740,7 @@ Also known as "Lazy Loading," this strategy involves loading data into the cache
 - Requires additional complexity in application code to manage caching logic.
 
 ### Read Through
-![](cache/02_strategy_02.png)
+![](img/cache/02_strategy_02.png)
 
 In this approach, data is automatically loaded into the cache from the database when there is a cache miss. The application only interacts with the cache and not directly with the database for read operations.
 
@@ -754,7 +754,7 @@ In this approach, data is automatically loaded into the cache from the database 
 
 ### Write Around
 
-![](cache/02_strategy_03.png)
+![](img/cache/02_strategy_03.png)
 When data is written, it is written directly to the database and not to the cache. The cache is only updated when data is read.
 
  **Pros:**
@@ -766,7 +766,7 @@ When data is written, it is written directly to the database and not to the cach
    - May increase database load since every write goes directly to the database.
 ### Write Back (Write Behind)
 
-![](cache/02_strategy_04.png)
+![](img/cache/02_strategy_04.png)
 Data is first written to the cache and then, after a certain amount of time or under certain conditions, written back to the database. This allows for batch updates.
 
  **Pros:**
@@ -776,10 +776,9 @@ Data is first written to the cache and then, after a certain amount of time or u
  **Cons:**
    - Risk of data loss if the cache fails before data is written back to the database.
    - Complexity in ensuring that the cache and database are eventually synchronized.
-
 ### Write Through
 
-![](cache/02_strategy_05.png)
+![](img/cache/02_strategy_05.png)
 Data is written simultaneously to the cache and the database. This ensures data consistency between the cache and database.
 
 **Pros:**
