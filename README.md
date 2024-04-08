@@ -1,5 +1,54 @@
 > Navigating the many articles, courses, and videos on systems design can take time and effort. In this tutorial, I briefly cover the main points of systems architecture design. This is a cheat sheet for those preparing for interviews or wanting to brush up on knowledge quickly.
 
+# Table of Contents
+- [Networks](#networks)
+	- [Types](#types)
+	- [Components](#components)
+	- [Topologies](#topologies)
+	- [Protocols](#protocols)
+	- [OSI and TCP/IP Models](#osi-and-tcpip-models)
+	- [Security](#security)
+- [API Architecture Styles](#api-architecture-styles)
+	- [Different Styles of API Architecture](#different-styles-of-api-architecture)
+	- [REST](#rest)
+	- [GraphQL](#graphql)
+	- [WebSocket](#websocket)
+	- [Webhook](#webhook)
+	- [RPC and gRPC](#rpc-and-grpc)
+	- [SOAP](#soap)
+- [Balancer, Proxy, Gateway](#balancer-proxy-gateway)
+	- [Load Balancers](#load-balancers)
+	- [Reverse Proxy](#reverse-proxy)
+	- [Forward Proxy](#forward-proxy)
+	- [API Gateway](#api-gateway)
+	- [Conclusion](#conclusion)
+- [Cache](#cache)
+	- [Types of Caching](#types-of-caching)
+	- [Top caching strategies](#top-caching-strategies)
+	- [Cache eviction policies](#cache-eviction-policies)
+	- [Cache invalidation](#cache-invalidation)
+	- [Popular Solutions](#popular-solutions)
+- [Message Queues](#message-queues)
+	- [Components](#components)
+	- [Messaging Models](#messaging-models)
+	- [Protocols](#protocols)
+		- [AMQP](#amqp-advanced-message-queuing-protocol)
+		- [MQTT](#mqtt-message-queuing-telemetry-transport)
+		- [JMS](#jms-java-message-service)
+		- [STOMP](#stomp-simple-text-oriented-messaging-protocol)
+		- [Kafka Protocol](#kafka-protocol)
+		- [ZMTP](#zmtp-zeromq-message-transport-protocol)
+	- [Brokers](#brokers)
+		- [ActiveMQ](#activemq)
+		- [RabbitMQ](#rabbitmq)
+		- [Kafka](#kafka)
+		- [ZeroMQ](#zeromq)
+- [RDBMS](#rdbms)
+	- [Terminology](#terminology)
+	- [Database Design Strategies](#database-design-strategies)
+	- [ER (Entity Relationship) Diagram](#er-entity-relationship-diagram)
+	- [Design Patterns](#design-patterns)
+	- [Scaling and Fault Tolerance](#scaling-and-fault-tolerance)
 
 # Networks
 Any complex system is a mosaic of numerous components, each with its specific function. These components don't operate in isolation; they constantly interact over a network, exchanging data and commands. Understanding the basics of these interactions is crucial.
@@ -912,7 +961,7 @@ A Java-based messaging standard offers interfaces for point-to-point and publish
 - **Security:** Relies on the underlying Java EE security model
 - **Addressing:** Uses JNDI for locating queues and topics
 - **Architecture:** It is often implemented on top of enterprise service buses or application servers.
-### **STOMP (Simple Text Oriented Messaging Protocol**)
+### STOMP (Simple Text Oriented Messaging Protocol)
 ![](img/queue/05_protocols_04.png)
 A simple, text-based protocol that is easy to implement, suitable for scenarios where advanced messaging features are not a priority.
 - **Use Cases:** Rapid development environments and simple messaging applications
