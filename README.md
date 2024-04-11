@@ -1,3 +1,11 @@
+# The System Design Cheat Sheet
+<p align="center">
+<img src="https://img.shields.io/github/last-commit/gavr-dev/system-design-cheat-sheet"/>
+<a href="" alt="Tag"><img src="https://img.shields.io/github/v/tag/gavr-dev/system-design-cheat-sheet"/></a>
+<a href="https://hackernoon.com/u/gavr" alt="Articles"><img src="https://img.shields.io/badge/articles-hackernoon.com-green"/></a>
+<a href="https://github.com/gavr-dev/system-design-cheat-sheet/blob/main/LICENSE" alt="GPLv3 licensed"><img src="https://img.shields.io/badge/license-GPLv3-blue"/></a>
+</p>
+
 > Navigating the many articles, courses, and videos on systems design can take time and effort. In this tutorial, I briefly cover the main points of systems architecture design. This is a cheat sheet for those preparing for interviews or wanting to brush up on knowledge quickly.
 
 # Table of Contents
