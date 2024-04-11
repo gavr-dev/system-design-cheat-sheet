@@ -1,8 +1,8 @@
-# The System Design Cheat Sheet
+<h1 align="center">The System Design Cheat Sheet</h1>
 <p align="center">
 <img src="https://img.shields.io/github/last-commit/gavr-dev/system-design-cheat-sheet"/>
 <a href="" alt="Tag"><img src="https://img.shields.io/github/v/tag/gavr-dev/system-design-cheat-sheet"/></a>
-<a href="https://hackernoon.com/u/gavr" alt="Articles"><img src="https://img.shields.io/badge/articles-hackernoon.com-green"/></a>
+<a href="https://hackernoon.com/u/gavr" target="_blank" alt="Articles"><img src="https://img.shields.io/badge/articles-hackernoon.com-green"/></a>
 <a href="https://github.com/gavr-dev/system-design-cheat-sheet/blob/main/LICENSE" alt="GPLv3 licensed"><img src="https://img.shields.io/badge/license-GPLv3-blue"/></a>
 </p>
 
